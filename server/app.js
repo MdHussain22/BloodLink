@@ -36,6 +36,10 @@ app.use(async (_req, res, next) => {
   }
 });
 app.get("/api/health", (_req, res) => res.json({ status: "ok", app: "BloodLink API" }));
+app.use("/api/auth", (req, res, next) => {
+  console.log("AUTH ROUTE REACHED:", req.method, req.originalUrl);
+  next();
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/donors", donorRoutes);
 app.use("/api/requests", requestRoutes);
