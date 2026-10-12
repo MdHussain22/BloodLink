@@ -10,6 +10,8 @@ import requestRoutes from "./routes/requests.js";
 import notificationRoutes from "./routes/notifications.js";
 
 const app = express();
+
+app.set("trust proxy", 1); // Required for Vercel's proxy
 app.disable("x-powered-by");
 app.use(helmet());
 const allowedOrigins = (process.env.CLIENT_ORIGINS || "http://localhost:5173")
